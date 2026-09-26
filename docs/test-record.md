@@ -34,14 +34,15 @@ The navigation setting `hide_nav_bar` was `1`; three-button mode was reported, b
 | Native Home button | Opened Nova | Selected Home was already installed |
 | Native Recents button | Did not open overview | Configured Quickstep provider absent |
 | `adb unroot` | UID 2000 verified after reconnect | Not a device reboot |
-| Navigation after unroot | Still visible; setting read `0` | Current boot only |
+| Navigation after unroot | Still visible; setting read `0` | One-boot procedure only |
 | Normal Hearth interface | Left in foreground | Not full feature qualification |
+| Optional root boot-hook persistence | Reboot restored nav state and delayed Hearth launch | One modified userdebug unit; firmware-update survival untested |
 | Sleep schedule | Settings present; service unavailable to checks | No repaired sleep/wake test |
 | Updates | Code inspected | No app or firmware update performed |
 
 ## What has not been tested
 
-Cold boot with the restored bar; removal of existing gesture software; live scheduler restoration; update-preserving service isolation; a real app-update or firmware-update cycle; restoration from a firmware backup; a repaired task switcher; and Google Play installation all remain unverified.
+Cold boot of the one-shot navigation change alone failed because the stock firmware boot script hid the bar again. The optional boot-hook repair was subsequently reboot-tested on the same unit. Removal of existing gesture software; live scheduler restoration; update-preserving service isolation; a real app-update or firmware-update cycle; restoration from a firmware backup; a repaired task switcher; factory-reset persistence; and Google Play installation remain unverified.
 
 No system APK was replaced, no recovery image was flashed, and no bootloader operation or factory reset was performed during the navigation restoration.
 

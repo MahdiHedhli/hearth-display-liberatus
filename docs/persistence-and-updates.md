@@ -1,6 +1,6 @@
 # Persistence, updates, and Google Play
 
-Status: research plan. None of the helper, service-isolation, or update tooling described here has been deployed or qualified by this project.
+Status: mixed. A narrow reboot-persistence patch for navigation and launching the Hearth interface has been qualified on the tested unit. Service isolation, sleep restoration, owner-control writes, Google Play, and update compatibility remain research or unfinished work.
 
 The goal is a Hearth that runs its normal family interface and sleep schedule while the owner can open other apps and maintain the device. The current package-disable workaround does not meet that goal: it avoids the foreground watchdog at the cost of other management functions.
 
@@ -11,6 +11,14 @@ Before a firmware experiment, preserve the exact installed software, configurati
 Identify the actual partition layout, accepted update format, and physical recovery route. A public dump with a matching chip-family name is not proof that it can restore this board. An apparently unlocked bootloader is not proof that a downgrade will work. Android documents [Verified Boot](https://source.android.com/docs/security/features/verifiedboot) and [OTA signing](https://source.android.com/docs/core/ota/sign_builds) separately for good reason.
 
 Do not replace recovery, relock the bootloader, or modify read-only system partitions as part of a navigation fix.
+
+## A narrow boot-persistence fix is now tested
+
+The tested firmware already runs `/system/bin/startonboot.sh` from a root init service after boot. Its stock post-onboarding path hides the native navigation bar and leaves the normal Hearth launch commented out.
+
+The optional [boot-persistence guide](boot-persistence.md) shows a reversible extension that restores the native bar and launches Hearth after the alternate Home launcher has had time to initialize. This solved the observed reboot regression on the test unit.
+
+That result is intentionally narrow. It does not restore the disabled sleep/update services and is not evidence that modifying `/system` through OverlayFS is safe across a vendor OTA.
 
 ## Restore only the services needed for normal use
 

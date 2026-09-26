@@ -6,7 +6,7 @@ The display we tested already had a navigation bar. Hearth's customized SystemUI
 
 ![Native Android navigation bar restored on the tested display](assets/native-navigation.png)
 
-**Back and Home worked in live tests. The Recents button appeared, but its task-switcher component was missing. Reboot and firmware-update survival have not been tested.** See the [test record](docs/test-record.md) for the conditions behind those results.
+**Back and Home worked in live tests. The Recents button appeared, but its task-switcher component was missing. A separate root boot-hook patch restored the native bar and Hearth launch across reboot on the tested unit; firmware-update survival remains untested.** See the [test record](docs/test-record.md) for the conditions behind those results.
 
 ## Start here
 
@@ -22,7 +22,7 @@ For running other apps, read [Apps and kiosk behavior](docs/apps-and-kiosk.md) b
 | --- | --- |
 | Developer options and wireless pairing | Documented by the original community guide and Android; authorized ADB access verified on the test unit |
 | Built-in ADB root | Worked on the tested Android 11 `userdebug` build |
-| Native navigation | Bar restored; Back and Home taps worked |
+| Native navigation | Bar restored; Back and Home taps worked; reboot persistence qualified with the optional boot-hook patch |
 | Recents | Visible button, missing Launcher3/Quickstep implementation |
 | Kiosk controls | Management behavior inspected; alternate Home and Hearth app coexist in the tested configuration |
 | Scheduled sleep | Saved schedule found; required service unavailable in the tested disabled-package state |
@@ -37,7 +37,7 @@ Use a device you own or have permission to administer. Work while nobody depends
 
 Root commands can change far more than a navigation bar. Stop if the build, package names, permissions, or results differ from the guide. There is no firmware flash, factory reset, bootloader operation, or permanent root installation in these instructions. Do not expose ADB to the internet.
 
-For recovery details, use [Troubleshooting and undo](docs/troubleshooting.md). For longer-term work, see [Persistence, updates, and Google Play](docs/persistence-and-updates.md). That page is a plan, not an update-proof hack.
+For reboot persistence, see [Keep navigation and Hearth visible after reboot](docs/boot-persistence.md). For recovery details, use [Troubleshooting and undo](docs/troubleshooting.md). Longer-term service and update work remains in [Persistence, updates, and Google Play](docs/persistence-and-updates.md).
 
 ## Credit and sources
 

@@ -4,7 +4,7 @@ This public repository documents owner-authorized Hearth Display access. Read RE
 
 Keep private runtime state and device evidence outside the repository. Never import a chat export, home-directory path, actual network address, serial, pairing code, account data, full screenshot, APK, firmware, or vendor credential. Use generic placeholders. Recheck the complete staged tree before every push.
 
-The tested navigation technique uses an existing protected broadcast after temporary ADB root, followed by unroot. Back and Home passed on one modified unit; Recents, reboot survival, update-safe persistence, service isolation, and Google Play must not be presented as solved.
+The tested navigation technique uses an existing protected broadcast after temporary ADB root, followed by unroot. Back and Home passed on one modified unit. An optional modification of the firmware's existing root boot hook was later reboot-tested for restoring navigation and launching Hearth. Recents, update-safe persistence, service isolation, sleep restoration, and Google Play must not be presented as solved.
 
 A documentation request is not authorization to connect to a display, change settings, install software, or run a reboot/update. The files here are instructions for a human, not an unattended remediation system.
 

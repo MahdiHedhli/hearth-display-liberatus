@@ -111,6 +111,8 @@ Open Hearth again from your launcher when finished. Leave existing gesture softw
 
 ## What survives?
 
-The receiver writes a stored setting. We verified the bar during the current boot and after returning ADB to shell access. **We have not tested a cold boot, a factory reset, an app update, or a firmware update with this setup.** The management service can issue the hide command again.
+The one-shot receiver writes a stored setting, but the tested firmware's own root boot script later sends `hearth.navbar.hide`, so the simple navigation change did **not** survive reboot by itself.
 
-Use [Troubleshooting and undo](troubleshooting.md) if the result differs. The [persistence plan](persistence-and-updates.md) explains what still needs testing before owner access and automatic updating can coexist reliably.
+A separate, optional [boot-persistence procedure](boot-persistence.md) extends that existing firmware hook to restore the bar and bring Hearth back to the foreground after reboot. That behavior was qualified on the tested unit. Factory-reset and firmware-update survival remain untested, and the management service can still issue the hide action when it is active.
+
+Use [Troubleshooting and undo](troubleshooting.md) if the result differs. The [persistence and updates](persistence-and-updates.md) page covers the larger service and update questions that remain open.
