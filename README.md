@@ -16,6 +16,8 @@ Already paired? Start with the navigation guide. It explains the temporary root 
 
 For running other apps, read [Apps and kiosk behavior](docs/apps-and-kiosk.md) before disabling anything. The management package also contains Hearth's sleep scheduler and update handling. Disabling that entire package has costs.
 
+For interoperability work, see the [observed Hearth REST API roadmap](docs/api-roadmap.md). It documents cache-confirmed read endpoints and response shapes without publishing account tokens or household payloads.
+
 ## What this repository covers
 
 | Topic | Current evidence |
