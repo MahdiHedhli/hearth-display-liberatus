@@ -24,6 +24,10 @@ When `PrivilegedService` starts it registers the stock Binder service:
 
 The stock Schedule UI then becomes available again after Hearth is restarted.
 
+## Scope of this repair
+
+Enabling the entire HMF package also restores broader management and update behavior. This repair restored the stock Sleep Mode UI and the owner observed the display return to sleep, but it did not isolate management policy. Both services were later observed sharing a process. Do not kill the package or assume a component stop is harmless. See [maintenance-window design and qualification](hmf-maintenance-window.md).
+
 ## Reversible restoration
 
 From an authorized ADB shell on your own display:
@@ -52,7 +56,7 @@ Reverse engineering of the installed HMF implementation found that it stores sta
 - `hearth_display_scheduler_start`
 - `hearth_display_scheduler_stop`
 
-The start/stop values are seconds since midnight. HMF uses `AlarmManager.setExact()`, reacts to time/timezone changes, and uses `PowerManager.goToSleep()` / `wakeUp()`. While inside the sleep window, touching the display wakes it and HMF schedules a return to sleep after 300,000 ms (five minutes).
+Correction, October 5, 2026: on the inspected firmware the start/stop values are milliseconds since midnight, not seconds. The earlier wording used the wrong unit. The inspected alarm construction uses hour and minute; the stored values can also contain seconds. HMF uses `AlarmManager.setExact()`, reacts to time/timezone changes, and uses `PowerManager.goToSleep()` / `wakeUp()`. While inside the sleep window, touching the display wakes it and HMF schedules a return to sleep after 300,000 ms (five minutes).
 
 On the qualified unit, the original schedule survived liberation and was recovered without rewriting its values.
 
@@ -62,4 +66,5 @@ On the qualified unit, the original schedule survived liberation and was recover
 - Explicit `PrivilegedService` startup restored `hearth_ipc`.
 - Restarting the stock Hearth app after Binder registration restored the Schedule UI.
 - The existing wake alarm was observed registered under HMF.
+- The owner physically confirmed the display returned to sleep after the UI repair. This does not qualify a full future update or maintenance-window cycle.
 - Persistent boot restoration still requires reboot qualification. Do not describe it as reboot-proven until that test is complete.

@@ -20,6 +20,7 @@ PUBLIC_FILES = frozenset({
     'docs/apps-and-kiosk.md', 'docs/findings.md', 'docs/test-record.md',
     'docs/troubleshooting.md', 'docs/persistence-and-updates.md', 'docs/boot-persistence.md',
     'docs/sources.md', 'docs/api-roadmap.md', 'assets/native-navigation.png',
+    'docs/restore-sleep-mode.md', 'docs/hmf-maintenance-window.md',
     'scripts/check_public_docs.py', 'tests/test_public_docs.py',
 })
 PATTERNS = {

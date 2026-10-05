@@ -18,6 +18,8 @@ For running other apps, read [Apps and kiosk behavior](docs/apps-and-kiosk.md) b
 
 For interoperability work, see the [observed Hearth REST API roadmap](docs/api-roadmap.md). It documents cache-confirmed read endpoints and response shapes without publishing account tokens or household payloads.
 
+For recovered stock sleep functionality, see [Restore Sleep Mode](docs/restore-sleep-mode.md). The [HMF maintenance-window design](docs/hmf-maintenance-window.md) separates tested controller logic from the Android service/update bindings that are still unqualified. It is not yet an installable maintenance solution.
+
 ## What this repository covers
 
 | Topic | Current evidence |
@@ -27,8 +29,8 @@ For interoperability work, see the [observed Hearth REST API roadmap](docs/api-r
 | Native navigation | Bar restored; Back and Home taps worked; reboot persistence qualified with the optional boot-hook patch |
 | Recents | Visible button, missing Launcher3/Quickstep implementation |
 | Kiosk controls | Management behavior inspected; alternate Home and Hearth app coexist in the tested configuration |
-| Scheduled sleep | Saved schedule found; required service unavailable in the tested disabled-package state |
-| Updates without lockout | Research plan only |
+| Scheduled sleep | Stock UI and return-to-sleep restored on the inspected unit; maintenance isolation is separate |
+| Updates without lockout | Host-tested maintenance policy/journal; Android adapter and actual cycle unqualified |
 | Google Play | Not installed or tested |
 
 These results come from one already-modified display. They are not a compatibility claim for every Hearth model or a fresh-device installation test. The [findings register](docs/findings.md) distinguishes live results, inspected code, and open questions.

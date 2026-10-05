@@ -46,6 +46,12 @@ Cold boot of the one-shot navigation change alone failed because the stock firmw
 
 No system APK was replaced, no recovery image was flashed, and no bootloader operation or factory reset was performed during the navigation restoration.
 
+## Later restoration and maintenance checkpoint
+
+The original table above records the earlier disabled-package navigation test, not the latest state. On September 28 the stock power service was started explicitly, its Binder registration became available, the Sleep Mode UI returned, and the owner confirmed a real return to sleep. See [restoration details](restore-sleep-mode.md).
+
+On October 5, read-only inspection found both HMF services active in a shared system-UID process and confirmed the millisecond-of-day schedule representation. The separate maintenance controller's synthetic host policy and journal tests passed. No management-window adapter was installed and no actual maintenance/update cycle was run in that revision. [Maintenance qualification](hmf-maintenance-window.md) records the remaining gates. Do not generalize the stock sleep repair into proof of safe service isolation or firmware-update survival.
+
 ## How to add another result
 
 Report the non-unique Android version, build type, HMF version, package enabled state, selected launcher name, and the command/result being tested. State separately whether a reboot or update was performed.
